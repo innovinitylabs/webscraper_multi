@@ -1,24 +1,24 @@
 import glob, os
 
-y2015 = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\HMR\\2015"
-y2016 = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\HMR\\2015"
-y2017 = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\HMR\\2015"
+y2015 = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\HMR\\2015"
+y2016 = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\HMR\\2015"
+y2017 = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\HMR\\2015"
 
-TN_ma_f1_2015 = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\TMR1\\2015"
-TN_ma_f1_2016 = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\TMR1\\2016"
-TN_ma_f1_2017 = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\TMR1\\2017"
-
-
-TN_ma_f1a_2015 = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\TMR1a\\2015"
-TN_ma_f1a_2016 = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\TMR1a\\2016"
-TN_ma_f1a_2017 = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\TMR1a\\2017"
-
-CMR_2015 = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\CMR\\2015"
-CMR_2016 = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\CMR\\2016"
-CMR_2017 = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\CMR\\2017"
+TN_ma_f1_2015 = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\TMR1\\2015"
+TN_ma_f1_2016 = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\TMR1\\2016"
+TN_ma_f1_2017 = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\TMR1\\2017"
 
 
-mergedFolder = "C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\"
+TN_ma_f1a_2015 = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\TMR1a\\2015"
+TN_ma_f1a_2016 = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\TMR1a\\2016"
+TN_ma_f1a_2017 = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\TMR1a\\2017"
+
+CMR_2015 = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\CMR\\2015"
+CMR_2016 = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\CMR\\2016"
+CMR_2017 = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\CMR\\2017"
+
+
+mergedFolder = "C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\"
 
 print('merging 2015.....')
 

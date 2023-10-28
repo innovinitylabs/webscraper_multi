@@ -1,16 +1,12 @@
 # checks if the registration numbers are n order and if theres any missing data
-
-
 import codecs
-import time
 import re
 import glob
 import os
 import concurrent.futures
-import csv
 from itertools import repeat
 
-project_path = 'C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\'
+project_path = 'C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\'
 logs_path = f'{project_path}logs\\'
 
 
@@ -58,6 +54,9 @@ if __name__ == '__main__':
         year = (2015, 2016, 2017)
         start_scrape1 = executor.map(check_continuity, [i for i in p for j in year], year * len(p))
 
+
+
+#### Scrapbook
 # check_continuity('TMR1', 2015)
 # time.sleep(3)
 # check_continuity('TMR1', 2016)

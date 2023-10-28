@@ -13,7 +13,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from check_file import check_file
 
-project_path = '/Users/shyam/Downloads/TNregi_Scrape'
+project_path = '/'
 logs_path = f'{project_path}logs/'
 
 
@@ -27,11 +27,11 @@ def myscraper(mar_type, mar_place, mar_year):
     print(f'--------------> {mar_place}\n')
     print("running myScraper...")
 
-    ########################### SETUP ###########################
-    # mar_type = mar_type
+    ########################### Resume Job SETUP ###########################
+    
     start_no = check_file(mar_type, mar_place, mar_year)
     location = mar_place
-    year = mar_year  # <
+    year = mar_year  
     ########################### SETUP ###########################
     file_path = (f'{project_path}{mar_type}\\{mar_year}\\')
     file_name = f'{file_path}RECORDS_{mar_type}_{location}_{year}.csv'  # FILENAME HERE <----
@@ -41,7 +41,7 @@ def myscraper(mar_type, mar_place, mar_year):
     driver = webdriver.Chrome(options=options, executable_path='/chromedriver')
 
     driver.get('https://tnreginet.gov.in/portal/')
-    delay = 60  # seconds
+    delay = 60
     time.sleep(3)
     print('navigating to form...')
 
@@ -52,12 +52,11 @@ def myscraper(mar_type, mar_place, mar_year):
     search1 = driver.find_element_by_xpath('//*[@id="8500020"]/a')
     hov_mar = driver.find_element_by_xpath('//*[@id="90000403"]/a')
     hover = ActionChains(driver).move_to_element(more).move_to_element(search1).move_to_element(hov_mar)
-    hover.click().perform()
+    hover.click().perform() # Navigate Nested Dropdown Menu
 
     time.sleep(0.5)  # wait till load
     try:
-        myElem = WebDriverWait(driver, delay).until(EC.invisibility_of_element_located((By.ID, 'statusbar')))
-
+        WebDriverWait(driver, delay).until(EC.invisibility_of_element_located((By.ID, 'statusbar')))
         print("Page is ready!")
 
     except:
@@ -71,20 +70,20 @@ def myscraper(mar_type, mar_place, mar_year):
             print('__________START LOOP__________')
 
             # filling form
-            m_type = driver.find_element_by_xpath('//*[@id="cmb_marrType"]').click()
+            driver.find_element_by_xpath('//*[@id="cmb_marrType"]').click()
 
             if mar_type == 'TMR1':
-                sel = driver.find_element_by_xpath('//*[@id="cmb_marrType"]/option[3]').click()  # TN MAR FORM I
+                driver.find_element_by_xpath('//*[@id="cmb_marrType"]/option[3]').click()  # TN MAR FORM I
             elif mar_type == 'HMR':
-                sel = driver.find_element_by_xpath('//*[@id="cmb_marrType"]/option[2]').click()  # HINDU MARRIAGE
+                driver.find_element_by_xpath('//*[@id="cmb_marrType"]/option[2]').click()  # HINDU MARRIAGE
             elif mar_type == 'TMR1a':
-                sel = driver.find_element_by_xpath('//*[@id="cmb_marrType"]/option[4]').click()  # TN MAR FORM Ia
+                driver.find_element_by_xpath('//*[@id="cmb_marrType"]/option[4]').click()  # TN MAR FORM Ia
             elif mar_type == 'SPL':
-                sel = driver.find_element_by_xpath('//*[@id="cmb_marrType"]/option[5]').click()  # SPL MAR
+                driver.find_element_by_xpath('//*[@id="cmb_marrType"]/option[5]').click()  # SPL MAR
             elif mar_type == 'SPLO':
-                sel = driver.find_element_by_xpath('//*[@id="cmb_marrType"]/option[6]').click()  # SPL Sadha
+                driver.find_element_by_xpath('//*[@id="cmb_marrType"]/option[6]').click()  # SPL Sadha
             elif mar_type == 'CMR':
-                sel = driver.find_element_by_xpath('//*[@id="cmb_marrType"]/option[7]').click()  # CMR
+                driver.find_element_by_xpath('//*[@id="cmb_marrType"]/option[7]').click()  # CMR
 
 
             if mar_type != 'CMR':
@@ -96,9 +95,9 @@ def myscraper(mar_type, mar_place, mar_year):
                 hover = ActionChains(driver).move_to_element(search_by)
                 hover.click().perform()
             if mar_type != 'CMR':
-                office = driver.find_element_by_xpath('//*[@id="cmb_sub_registrar_office"]').send_keys(location)
-            in_reg_no = driver.find_element_by_xpath('//*[@id="RegNO1"]').send_keys(x)
-            in_year = driver.find_element_by_xpath('//*[@id="Year"]').send_keys(year)
+                driver.find_element_by_xpath('//*[@id="cmb_sub_registrar_office"]').send_keys(location)
+                driver.find_element_by_xpath('//*[@id="RegNO1"]').send_keys(x)
+                driver.find_element_by_xpath('//*[@id="Year"]').send_keys(year)
 
             submit = driver.find_element_by_xpath('//*[@id="CopyOfMarriageSearch"]/div[2]/div/div[18]/input')
             hover = ActionChains(driver).move_to_element(submit)
@@ -109,7 +108,7 @@ def myscraper(mar_type, mar_place, mar_year):
 
             time.sleep(0.5)
             try:
-                myElem = WebDriverWait(driver, delay).until(
+                WebDriverWait(driver, delay).until(
                     EC.invisibility_of_element_located((By.ID, 'statusbar')))  # wait till loading gif disappear
                 time.sleep(0.5)
                 new_reg_no = driver.find_element_by_xpath('//*[@id="MarriageMstListDisp"]/tbody/tr/td[1]').text
@@ -118,13 +117,13 @@ def myscraper(mar_type, mar_place, mar_year):
                 print("table  is ready!")
             except:
                 print("Loading table took too much time!!!!!!!!!!!!!!!!")
-                myElem = WebDriverWait(driver, delay).until(
+                WebDriverWait(driver, delay).until(
                     EC.invisibility_of_element_located((By.ID, 'statusbar')))  # wait till loading gif disappear
                 time.sleep(0.5)
                 pass
 
-            ######   EXTRACT DATA FROM TABLE    #####p
-            print('Saerching for table to Extract data...')
+            ######   EXTRACT DATA FROM TABLE    #####
+            print('Searching for table to Extract data...')
             res_reg_no = driver.find_element_by_xpath('//*[@id="MarriageMstListDisp"]/tbody/tr/td[1]').text
             res_hus = driver.find_element_by_xpath('//*[@id="MarriageMstListDisp"]/tbody/tr/td[2]').text
             res_wife = driver.find_element_by_xpath('//*[@id="MarriageMstListDisp"]/tbody/tr/td[3]').text
@@ -140,7 +139,7 @@ def myscraper(mar_type, mar_place, mar_year):
             print(f'|                           {location}                 | {res_wife}     {year}')
             print('----------------------- \n')
             
-            print('start csv write...')
+            print('Start csv write...')
             #####   write to CSV FILE   #####
             with codecs.open(file_name, mode='a', encoding='utf-8') as RECORDS_file:
                 employee_writer = csv.writer(RECORDS_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -149,7 +148,7 @@ def myscraper(mar_type, mar_place, mar_year):
                 print('Write to CSV success !')
                 print('**********END**********')
 
-        # driver.quit()
+        
 
 
     except:
@@ -160,6 +159,7 @@ def myscraper(mar_type, mar_place, mar_year):
         print('\n \n \n')
         print('error in ---= >', x)
         
+        #Logging
         with codecs.open(f"{logs_path}Completed_{mar_type}_{year}.txt", mode='a+', encoding='utf-8') as completed_file:
             print('error in --->', x)
             completed_file.write(
@@ -173,9 +173,8 @@ def myscraper(mar_type, mar_place, mar_year):
         
         print(f'     error in --->              {location}     {year}', x)
         print('\n')
-
         print(f'     error in --->              {location}     {year}', x)
-        driver.quit()
+        driver.quit() #redundant quit if previous one fails to quit
 
     driver.quit()
 

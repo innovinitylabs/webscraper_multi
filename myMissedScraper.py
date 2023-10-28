@@ -11,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from check_file import check_file
 
-project_path = 'C:\\Users\\Shyam\\PycharmProjects\\TNregi_Scrape\\'
+project_path = 'C:\\Users\\username\\PycharmProjects\\TNregi_Scrape\\'
 logs_path = f'{project_path}logs\\'
 
 
